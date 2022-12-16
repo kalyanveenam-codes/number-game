@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, View , StyleSheet, TextInput, Alert} from "react-native";
 import CustomButton from '../components/button';
+import GuessInputBox from '../components/guessInputBox';
+import Title, { Customtitle } from '../components/title';
 //const [count, setCount] = useState(0);
 
 
@@ -14,7 +16,7 @@ function HomeScreen ({onPickNumber}){
   console.log(value); 
 }
 
-
+    
 
  
  function onResetButtonClick(){ 
@@ -35,20 +37,12 @@ onPickNumber(getInput);
 }
    }
  return (
-        <View style={style.viewHolder}>
-            <TextInput style={style.view_input} keyboardType='number-pad' maxLength={2}  onChangeText={getInputValue} value={getInput}></TextInput>
-             <View style={style.buttonViewHolder}>
-            <View style={style.buttonContainer}>
-             <CustomButton style={style.view_resetbutton} pressListener={onResetButtonClick} >RESET</CustomButton> 
-             </View>
-             <View style={style.buttonContainer}>
-             <CustomButton  pressListener={onConfirmButtonClick}>CONFIRM</CustomButton>
-             </View>
-             </View>
-        </View>
-        
-       
-        
+
+<View>
+  <Customtitle> Lets get Started, Enter a number  </Customtitle>
+  <GuessInputBox button1='Reset' button2='Confirm' onButton1Click={onResetButtonClick} onButton2Click={onConfirmButtonClick} getValueFromInput={getInputValue} setValue={getInput}></GuessInputBox>
+
+  </View>
     ); 
 }
 

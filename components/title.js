@@ -8,8 +8,8 @@ function Customtitle (props){
 const styles= StyleSheet.create({
     mainArea:{
     
-        margin: 29,
-        padding: 25,
+        margin: 49,
+        padding: 10,
         borderWidth: 3,
         borderColor:'#bc720c'
 
