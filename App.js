@@ -14,7 +14,7 @@ export default function App() {
  let screen =<HomeScreen onPickNumber={pickedNumber} />;
 
 if(getUserNumber){
-  screen= <GameScreen />;
+  screen= <GameScreen  enteredNumber={getUserNumber}/>;
 }
 
 
