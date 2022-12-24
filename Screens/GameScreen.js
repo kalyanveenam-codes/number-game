@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View , SafeAreaView } from "react-native";
+import { View , SafeAreaView, Alert } from "react-native";
 import CustomButton from '../components/button';
 import{NumberContainer} from '../components/numberContainer'
 import {Customtitle} from '../components/title';
@@ -22,12 +22,20 @@ function gameScreen ({enteredNumber}){
    
     const randomnumber= generateRandomNumber(minValue,maxValue,enteredNumber);
     function nextGuessHandler(direction){
+        if(direction === 'higher' && enteredNumber < currentGuess || direction=== 'lower' && enteredNumber > currentGuess){
+            Alert.alert('Invalid','You are lying');
+            return;
+
+        }
+        
         if(direction==='higher'){
-        maxValue=currentGuess;      
+        minValue=currentGuess;      
         }
         else{
-        minValue= currentGuess;   
+           
+        maxValue= currentGuess;   
         }
+        console.log(minValue, maxValue);
         const rand=generateRandomNumber(minValue,maxValue,enteredNumber)
         setCurrentGuess(rand);
         console.log('clicked'+direction)
