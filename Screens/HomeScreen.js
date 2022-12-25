@@ -5,7 +5,7 @@ import CustomButton from '../components/button';
 
 
 
-function HomeScreen ({onPickNumber}){
+function HomeScreen ({onPickNumber, setGameState}){
 
   const [getState, setState]= useState(true); 
  const [getInput, setInput]= useState([]);
@@ -31,6 +31,7 @@ if(Number.isNaN(numberconv)){
 else{
 setState(false);
 onPickNumber(getInput);
+setGameState(false);
   console.log('submitted value'+getInput);
 }
    }
