@@ -19,13 +19,18 @@ function generateRandomNumber(min,max,exclude) {
 
 function gameScreen ({enteredNumber, setGameState}){
    console.log('coming')
-
+   
     const initialGuess= generateRandomNumber(1,100,enteredNumber);
     const [currentGuess, setCurrentGuess]=useState(initialGuess); 
+    useEffect(()=> {
+        console.log('coming to useEffect ',currentGuess,enteredNumber,typeof currentGuess, typeof enteredNumber);
+        if(currentGuess == enteredNumber){
+        console.log('game over')
+        setGameState(true);
+    }
+   }, [currentGuess]);
     function nextGuessHandler(direction){
-    //     useEffect(()=>{if(currentGuess === enteredNumber){
-    //       setGameState(true);
-    //   }}, [setGameState,currentGuess,enteredNumber]);
+
     const randomnumber= generateRandomNumber(minValue,maxValue,enteredNumber);
  
         if(direction === 'higher' && enteredNumber < currentGuess || direction=== 'lower' && enteredNumber > currentGuess){

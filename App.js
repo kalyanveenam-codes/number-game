@@ -19,7 +19,8 @@ const [isGameOver,setGameOverHandler] = useState(true);
 
  
  let screen =<HomeScreen onPickNumber={pickedNumber} setGameState={setGameOverState}/>;
-
+console.log('game:'+isGameOver);
+console.log('usernumber'+getUserNumber);
 if(getUserNumber){
  // setGameOver(false);
   screen= <GameScreen  enteredNumber={getUserNumber} setGameState={setGameOverState}/>;
