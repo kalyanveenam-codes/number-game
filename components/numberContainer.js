@@ -9,9 +9,9 @@ function NumberContainer(props){
 }
 const style= StyleSheet.create({
     viewcont:{
-        marginHorizontal:60,
+        marginHorizontal:50,
 
-       paddingVertical:40,
+
        // paddingHorizontal:10,
         borderWidth: 5,
         borderColor:'black'

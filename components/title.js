@@ -11,13 +11,16 @@ const styles= StyleSheet.create({
         margin: 29,
         padding: 25,
         borderWidth: 3,
-        borderColor:'#bc720c'
+        borderColor:'#bc720c',
+        alignItems:'center'
 
     },
     textstyle:{
         fontWeight:'bold',
-        fontSize:40,
-        color:'#efece8'
+        fontSize:30,
+        color:'#efece8',
+       
+        
     }
 
 })

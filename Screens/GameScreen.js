@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { View , SafeAreaView, Alert } from "react-native";
+import { View , SafeAreaView, Alert, StyleSheet, Text } from "react-native";
 import CustomButton from '../components/button';
+import Card from "../components/Card";
 import{NumberContainer} from '../components/numberContainer'
 import {Customtitle} from '../components/title';
+import {AntDesign} from '@expo/vector-icons';
 let minValue=1;
 let maxValue=100;
 function generateRandomNumber(min,max,exclude) {
@@ -54,18 +56,35 @@ function gameScreen ({enteredNumber, setGameState}){
     return (
         <SafeAreaView>
         <View>
-           <Customtitle>Opponents call</Customtitle>
+           <Customtitle>Guess My Number</Customtitle>
           
           <NumberContainer>{currentGuess}</NumberContainer>
-        
-           <View>
-           <CustomButton pressListener={nextGuessHandler.bind(this, 'higher')}> Higher</CustomButton>
-           <CustomButton pressListener={nextGuessHandler.bind(this,'lower')}> Lower</CustomButton>
+               <Card style={style.cardHolder}>
+                <Text style={style.textHolder}>Higher or Lower?</Text>
+                 <View style={style.buttonViewHolder}>
+           <CustomButton pressListener={nextGuessHandler.bind(this, 'higher')}> Higher <AntDesign name='pluscircle' /></CustomButton>
+           <CustomButton pressListener={nextGuessHandler.bind(this,'lower')}> Lower <AntDesign name='minuscircle' /></CustomButton>
            </View>
+           </Card>
         </View>
         </SafeAreaView>
     );
 }
+const style= StyleSheet.create({
+  buttonViewHolder:{
+
+    flexDirection:'row',
+    justifyContent: 'center'
+  },
+  cardHolder:{
+    marginTop: 40,
+    padding: 15
+  },
+  textHolder:{
+   textAlign:'justify'
+  }
+ 
+})
 
 
 export default gameScreen;

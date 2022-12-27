@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, View , StyleSheet, TextInput, Alert} from "react-native";
 import CustomButton from '../components/button';
+import Card from '../components/Card'
 //const [count, setCount] = useState(0);
 
 
@@ -32,11 +33,12 @@ else{
 setState(false);
 onPickNumber(getInput);
 setGameState(false);
+
   console.log('submitted value'+getInput);
 }
    }
- return (
-        <View style={style.viewHolder}>
+ return (<Card>
+         {/* <View style={style.viewHolder}> */}
             <TextInput style={style.view_input} keyboardType='number-pad' maxLength={2}  onChangeText={getInputValue} value={getInput}></TextInput>
              <View style={style.buttonViewHolder}>
             <View style={style.buttonContainer}>
@@ -46,7 +48,8 @@ setGameState(false);
              <CustomButton  pressListener={onConfirmButtonClick}>CONFIRM</CustomButton>
              </View>
              </View>
-        </View>
+         {/* </View> */}
+        </Card>
         
        
         
@@ -76,7 +79,7 @@ shadowRadius:9
   },
   view_input:{
     
-   width:40,
+   width:60,
     height: 50,
     fontSize:40,
     borderBottomWidth:2,
