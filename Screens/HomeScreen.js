@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, View , StyleSheet, TextInput, Alert} from "react-native";
+import { Button, View , StyleSheet, TextInput, Alert, Text} from "react-native";
 import CustomButton from '../components/button';
 import Card from '../components/Card'
 //const [count, setCount] = useState(0);
@@ -39,6 +39,7 @@ setGameState(false);
    }
  return (<Card>
          {/* <View style={style.viewHolder}> */}
+         <Text style={style.textsty}>ENTER A NUMBER</Text>
             <TextInput style={style.view_input} keyboardType='number-pad' maxLength={2}  onChangeText={getInputValue} value={getInput}></TextInput>
              <View style={style.buttonViewHolder}>
             <View style={style.buttonContainer}>
@@ -90,6 +91,13 @@ shadowRadius:9
   },
   buttonContainer:{
     flex: 1
+  },
+  textsty:{
+    fontFamily:'opensans-bold',
+    fontSize:20,
+    color:'white',
+    shadowOpacity:30,
+    
   }
   
 })

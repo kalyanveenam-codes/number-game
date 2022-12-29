@@ -19,6 +19,7 @@ const style= StyleSheet.create({
     text:{
         textAlign:'center',
         fontSize: 50,
+        fontFamily:'opensans-bold',
 fontWeight:'bold'
 
     }

@@ -7,6 +7,7 @@ import {Customtitle} from '../components/title';
 import {AntDesign} from '@expo/vector-icons';
 let minValue=1;
 let maxValue=100;
+
 function generateRandomNumber(min,max,exclude) {
 
     const rdm=Math.floor(Math.random()*(max-min))+min;
@@ -19,11 +20,12 @@ function generateRandomNumber(min,max,exclude) {
       
   }
 
-function gameScreen ({enteredNumber, setGameState}){
-   console.log('coming')
+function gameScreen ({enteredNumber, setGameState, setCounter}){
    
+   const [getGuessCount, setGuessCount]= useState(1);
     const initialGuess= generateRandomNumber(1,100,enteredNumber);
     const [currentGuess, setCurrentGuess]=useState(initialGuess); 
+   
     useEffect(()=> {
         console.log('coming to useEffect ',currentGuess,enteredNumber,typeof currentGuess, typeof enteredNumber);
         if(currentGuess == enteredNumber){
@@ -47,6 +49,9 @@ function gameScreen ({enteredNumber, setGameState}){
         maxValue= currentGuess;   
         }
         console.log(minValue, maxValue);
+        setGuessCount(getGuessCount+1);
+        setCounter(getGuessCount);
+        console.log('count:'+getGuessCount)
         const rand=generateRandomNumber(minValue,maxValue,enteredNumber)
         setCurrentGuess(rand);
         console.log('clicked'+direction)
