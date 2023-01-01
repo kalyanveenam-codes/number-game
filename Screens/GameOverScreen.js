@@ -2,7 +2,7 @@
 import { View , Text, Image , StyleSheet } from "react-native";
 import CustomButton from "../components/button";
 import { Customtitle } from "../components/title";
-function gameOverScreen({enteredNumber, roundCounter}){
+function gameOverScreen({enteredNumber, roundCounter, setNewGame}){
 
     return <View style={styles.rootHolder}>
         <Customtitle>Game Over</Customtitle>
@@ -10,7 +10,7 @@ function gameOverScreen({enteredNumber, roundCounter}){
         <Image style={styles.img} source={require('../assets/arrows.jpg')} ></Image>
         </View>
         <Text style={styles.textHolder}>Your phone needed <Text style={styles.innerText}>{roundCounter}</Text> rounds to Guess <Text style={styles.innerText}>{enteredNumber}</Text> Number </Text>
-         <CustomButton >Start New Game</CustomButton>
+         <CustomButton pressListener={setNewGame} >Start New Game</CustomButton>
           </View>
 }
 const styles= StyleSheet.create(

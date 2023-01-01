@@ -8,6 +8,7 @@ import {AntDesign} from '@expo/vector-icons';
 let minValue=1;
 let maxValue=100;
 
+
 function generateRandomNumber(min,max,exclude) {
 
     const rdm=Math.floor(Math.random()*(max-min))+min;
@@ -25,7 +26,7 @@ function gameScreen ({enteredNumber, setGameState, setCounter}){
    const [getGuessCount, setGuessCount]= useState(1);
     const initialGuess= generateRandomNumber(1,100,enteredNumber);
     const [currentGuess, setCurrentGuess]=useState(initialGuess); 
-   
+   const [getGuessedValues,setGuessedValues]= useState([initialGuess]);
     useEffect(()=> {
         console.log('coming to useEffect ',currentGuess,enteredNumber,typeof currentGuess, typeof enteredNumber);
         if(currentGuess == enteredNumber){
@@ -33,6 +34,11 @@ function gameScreen ({enteredNumber, setGameState, setCounter}){
         setGameState(true);
     }
    }, [currentGuess]);
+   useEffect(()=>{
+    console.log('use effect in progress')
+     minValue=1;
+     maxValue=100;
+   },[]);
     function nextGuessHandler(direction){
 
     const randomnumber= generateRandomNumber(minValue,maxValue,enteredNumber);
@@ -53,6 +59,7 @@ function gameScreen ({enteredNumber, setGameState, setCounter}){
         setCounter(getGuessCount);
         console.log('count:'+getGuessCount)
         const rand=generateRandomNumber(minValue,maxValue,enteredNumber)
+        setGuessedValues(currentValue =>[rand,...currentValue]);
         setCurrentGuess(rand);
         console.log('clicked'+direction)
      
@@ -71,6 +78,9 @@ function gameScreen ({enteredNumber, setGameState, setCounter}){
            <CustomButton pressListener={nextGuessHandler.bind(this,'lower')}> Lower <AntDesign name='minuscircle' /></CustomButton>
            </View>
            </Card>
+        </View>
+        <View>
+        {getGuessedValues.map( getGuessedValue => <Text key={getGuessedValue}>{getGuessedValue}</Text>)}
         </View>
         </SafeAreaView>
     );

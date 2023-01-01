@@ -29,8 +29,13 @@ function setroundCounter(value){
 }
 
     function  setGameOverState(value){
-  
+ 
       setGameOverHandler(value);
+    }
+    function newGameSetup(){
+      setCounter(0);
+      setUserNumber(null);
+  
     }
 
  
@@ -40,7 +45,7 @@ if(getUserNumber){
   screen= <GameScreen  enteredNumber={getUserNumber} setGameState={setGameOverState} setCounter={setroundCounter} />;
 }
 if(isGameOver && getUserNumber){
-  screen= <GameOverScreen enteredNumber={getUserNumber} roundCounter={getCounter}/>
+  screen= <GameOverScreen enteredNumber={getUserNumber} roundCounter={getCounter} setNewGame={newGameSetup}/>
 }
 
 
